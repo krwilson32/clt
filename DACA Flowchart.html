@@ -1,0 +1,66 @@
+Title: DACA "Flowchart"
+Author: Kisha Wilson
+Before: <link rel="stylesheet" type="text/css" href="https://suffolklitlab.org/howto/qna/style/style.css">
+<div id="icon" style="background-size: 110px 99px;background-image: url('https://suffolklitlab.org/howto/qna/images/maxheadroom.gif');"></div>
+<h2 style="text-align:center;">DACA "Flowchart"</h2>
+<p><b>This is a <a href="https://www.codingthelaw.org/#mission">class project</a>. You should not rely on it as a source of legal information!</b></p>
+<p>Answer the following questions to see if someone qualifies for DACA.</p>
+
+Q(81_birthday): Is their birthday on or after June 16, 1981?
+A: Yes
+	Q(enter_16): Did they enter the United States before the sixteenth birthday?
+	A: Yes
+		Q(InUS_2012):Were they in the United States on June 15, 2012?
+		A: Yes
+			Q(continuous): Have they continuously resided in the United States since June 15, 2007?
+			A: Yes
+				Q(out_status): Were they out of status on June 15, 2012?
+				A:Yes
+					Q(felony): Have they been convicted of a felony or a significant misdemeanor?
+					A: Yes
+						Q(affirm_felony):GOTO:fifteen
+					A: No
+						Q(mult_misd): have they been convicted of more than one misdemeanor?
+						A: Yes
+							Q(affirm_multmis):GOTO:fifteen
+						A: No
+							Q(threat): Do they pose a threat to national security or public safety?
+							A: Yes
+								Q(affirm_threat):GOTO:fifteen
+							A: No
+								Q(school): Are they currently in school?
+								A:Yes
+									Q(inschool):GOTO:fifteen
+								A: No
+									Q(discharged): Are they an honorably discharged veteran of the Coast Guard or Armed Forces of the United States?
+									A: Yes
+										Q(yes_discharged):GOTO:5
+									A: No
+										Q(Not_discharged):GOTO:4
+
+				A:No
+			A: No
+				Q(no_continue):GOTO:3
+
+		A: No
+			Q(decline_2012):GOTO:3
+
+	A: No
+		Q(decline_16):GOTO:3
+
+A: No.
+	Q(1.2):GOTO:3
+
+
+Q(fifteen): Are they 15 or older?
+A: Yes
+	Q(Yes_fifteen):GOTO:5
+A: No
+	Q(Removal): Are they currently in removal proceedings, or have a final removal or VD order?
+	A: Yes
+		Q(yes_removal):GOTO:5
+	A: No
+		Q(not_removal):GOTO:4
+Q(3): Ineligible.
+Q(4): Wait.
+Q(5): Eligible.
