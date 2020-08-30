@@ -1,0 +1,124 @@
+Title: Indigency "Flowchart"
+Author: Kisha Wilson
+Before: <link rel="stylesheet" type="text/css" href="https://suffolklitlab.org/howto/qna/style/style.css">
+<div id="icon" style="background-size: 110px 99px;background-image: url('https://suffolklitlab.org/howto/qna/images/maxheadroom.gif');"></div>
+<h2 style="text-align:center;">Indigency "Flowchart"</h2>
+<p><b>This is a <a href="https://www.codingthelaw.org/level/2/#mission_p1">class project</a>. You should not rely on it as a source of legal information!</b></p>
+<p>Answer the following questions to see if you qualify for appointed counsel in Connecticut.</p>
+
+Q(1): Has the defendant committed a felony or misdemeanor?
+A: Felony
+	Q(1.1): How many people live in the defendant's household (including the defendant)?
+	A: 1
+		Q(1.1.1): Is the defendant's total household income per year more than $25,520?
+		A: Yes
+			Q(1.1.1.1):GOTO:Ineligible
+		A: No
+			Q(1.1.1.2):GOTO:Eligible
+	A: 2
+		Q(1.1.2): Is the defendant's total household income per year more than $34,480?
+		A: Yes
+			Q(1.1.2.1):GOTO:Ineligible
+		A: No
+			Q(1.1.2.2):GOTO:Eligible
+	A: 3
+		Q(1.1.3): Is the defendant's total household income per year more than $43,440?
+		A: Yes
+			Q(1.1.3.1):GOTO:Ineligible
+		A: No
+			Q(1.1.3.2):GOTO:Eligible
+	A: 4
+		Q(1.1.4): Is the defendant's total household income per year more than $52,400?
+		A: Yes
+			Q(1.1.4.1):GOTO:Ineligible
+		A: No
+			Q(1.1.4.2):GOTO:Eligible
+	A: 5
+		Q(1.1.5): Is the defendant's total household income per year more than $61,360?
+		A: Yes
+			Q(1.1.5.1):GOTO:Ineligible
+		A: No
+			Q(1.1.5.2):GOTO:Eligible
+	A: 6
+		Q(1.1.6): Is the defendant's total household income per year more than $70,320?
+		A: Yes
+			Q(1.1.6.1):GOTO:Ineligible
+		A: No
+			Q(1.1.6.2):GOTO:Eligible
+	A: 7
+		Q(1.1.7): Is the defendant's total household income per year more than $79,280?
+		A: Yes
+			Q(1.1.7.1):GOTO:Ineligible
+		A: No
+			Q(1.1.7.2):GOTO:Eligible
+	A: 8
+		Q(1.1.8): Is the defendant's total household income per year > $88,420?
+		A: Yes
+			Q(1.1.8.1):GOTO:Ineligible
+		A: No
+			Q(1.1.8.2):GOTO:Eligible
+	A: More than 8
+		Q(1.1.9): For each person over 8 people in the household, add an additional $4,480 to the $44,120 limit for families of 8. Then multiply that number by 2. Ex: For a houselhold of 9, you would add: $4,480 + $44,120 which is $48,600 and multiply it by 2 for a total limit of $97,200. Is the defendant's total househol income per year more than that number?
+		A: Yes
+			Q(1.1.9.1):GOTO:Ineligible
+		A: No
+			Q(1.1.9.2):GOTO:Eligible
+A: Misdemeanor
+	Q(1.2): How many people live in the defendant's household (including the defendant)?
+	A: 1
+		Q(1.2.1): Is the defendant's total household income per year more than $19,140?
+		A: Yes
+			Q(1.2.1.1):GOTO:Ineligible
+		A: No
+			Q(1.2.1.2):GOTO:Eligible
+	A: 2
+		Q(1.2.2): Is the defendant's total household income per year more than $25,860?
+		A: Yes
+			Q(1.2.2.1):GOTO:Ineligible
+		A: No
+			Q(1.2.2.2):GOTO:Eligible
+	A: 3
+		Q(1.2.3): Is the defendant's total household income per year more than $32,580?
+		A: Yes
+			Q(1.2.3.1):GOTO:Ineligible
+		A: No
+			Q(1.2.3.2):GOTO:Eligible
+	A: 4
+		Q(1.2.4): Is the defendant's total household income per year more than $39,300?
+		A: Yes
+			Q(1.2.4.1):GOTO:Ineligible
+		A: No
+			Q(1.2.4.2):GOTO:Eligible
+	A: 5
+		Q(1.2.5): Is the defendant's total household income per year more than $46,020?
+		A: Yes
+			Q(1.2.5.1):GOTO:Ineligible
+		A: No
+			Q(1.2.5.2):GOTO:Eligible
+	A: 6
+		Q(1.2.6): Is the defendant's total household income per year more than $52,740?
+		A: Yes
+			Q(1.2.6.1):GOTO:Ineligible
+		A: No
+			Q(1.2.6.2):GOTO:Eligible
+	A: 7
+		Q(1.2.7): Is the defendant's total household income per year more than $59,460?
+		A: Yes
+			Q(1.2.7.1):GOTO:Ineligible
+		A: No
+			Q(1.2.7.2):GOTO:Eligible
+	A: 8
+		Q(1.2.8): Is the defendant's total household income per year > $66,180?
+		A: Yes
+			Q(1.2.8.1):GOTO:Ineligible
+		A: No
+			Q(1.2.8.2):GOTO:Eligible
+	A: More than 8
+		Q(1.2.9): For each person over 8 people in the household, add an additional $4,480 to the $44,120 federal limit for families of 8. Then multiply that number by 1.5. Ex: For a houselhold of 9, you would add: $4,480 + $44,120 which is $48,600 and multiply it by 1.5 for a total limit of $72,900. Is the defendant's total househol income per year > that number?
+		A: Yes
+			Q(1.2.9.1):GOTO:Ineligible
+		A: No
+			Q(1.2.9.2):GOTO:Eligible
+
+Q(Ineligible):Ineligible
+Q(Eligible):Eligible
