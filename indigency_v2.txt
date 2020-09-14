@@ -1,6 +1,6 @@
 Title: Connecticut Indigency "Flowchart"
 Author: Kisha Wilson
-Before: <script src="https://[your username].github.io/ctl/functions.js"></script>
+Before: <script src="https://krwilson32.github.io/ctl/functions.js"></script>
 After:
 <script>
 function fedpov(house, income, percentage){
