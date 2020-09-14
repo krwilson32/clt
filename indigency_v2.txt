@@ -1,0 +1,53 @@
+Title: Connecticut Indigency "Flowchart"
+Author: Kisha Wilson
+Before: <script src="https://[your username].github.io/ctl/functions.js"></script>
+After:
+<script>
+function fedpov(house, income, percentage){
+	// Determines if your income is less than or equal to
+	// a percentage of the 2020 federal poverty guidelines
+	// for the contiguous United States. See
+	// http://aspe.hhs.gove/poverty-guidelines
+
+		var line = NaN;
+		
+		if (house == 1) {
+			line = 12760;
+		} else if (house == 2) {
+			line = 12760;
+		} else if (house == 3) {
+			line = 17240;
+		} else if (house == 4) {
+			line = 21760;
+		} else if (house == 5) {
+			line = 26200;
+		} else if (house == 6) {
+			line = 35160;
+		} else if (house == 7) {
+			line = 39640;
+		} else if (house == 8) {
+			line = 44120;
+		} else if (house > 8) {
+			line = 44120 + (house-8)*4480;
+		}
+
+		if (income <= (line*(percentage/100))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
+Q(house): How many people are in the defendant's household?
+X:number
+	Q(income): What is the defendant's total household income?
+	X:number
+		Q(charge): Has the defendant been charged with a felony or misdemeanor?
+		A[javascript: if (fedpov(getvar('house'),getvar('income'),150)){goto('qualmisd') } else { goto('noqualmisd') } ]: Misdemeanor
+		A[javascript: if (fedpov(getvar('house'),getvar('income'),200)){goto('qualfelon') } else { goto('noqualfelon') } ]: Felony
+
+Q(noqualmisd):You are PROBABLY INELIGIBLE to receive appointed counsel because your household income is above 150% of the poverty line.
+Q(qualmisd):You are PROBABLY ELIGIBLE to received appointed counsel because your household income is below 150% of the poverty line. If at any time, either during or after the court's decision of his case, a defendant who is receiving or has received public defender services based on his indigency becomes financially able to meet all or some part of the cost of the services he received, he shall be required to reimburse the commission, in such amounts as he can reasonably pay, either by a single payment or by installments of reasonable amounts, as described in a schedule of charges for public defender services prepared by the commission. CT ST 51-298(a)(1)
+Q(noqualfelon):You are PROBABLY INELIGIBLE to receive appointed counsel because your household income is above 200% of the poverty line.
+Q(qualfelon):You are PROBABLY ELIGIBLE to received appointed counsel because your household income is below 200% of the poverty line. If at any time, either during or after the court's decision of his case, a defendant who is receiving or has received public defender services based on his indigency becomes financially able to meet all or some part of the cost of the services he received, he shall be required to reimburse the commission, in such amounts as he can reasonably pay, either by a single payment or by installments of reasonable amounts, as described in a schedule of charges for public defender services prepared by the commission. CT ST 51-298(a)(1)
