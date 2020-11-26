@@ -1,0 +1,147 @@
+comment: |
+  The metadata section controls the tab title and saved interview title. You can delete this section if you include this YAML file in another YAML file.
+metadata:
+  title: |
+    Outside Employment Activity Approval Form
+  short title: |
+    Outside Employment
+---  
+id: Outside Activity Approval Memo
+continue button field: Outside_Activity_Approval_Memo_intro
+question: |
+  Outside Activity Approval Memo
+subquestion: |
+ You can use this form to determine whether or not your outside employment activity is approved. If you have any questions, please reach out to the Ethics office at bos.ethics@bos.frb.org or directly to the Ethics Officer.
+---
+mandatory: True
+question:  |
+  Tell us about yourself
+subquestions:  |
+fields:
+  - First Name: user_firstname
+  - Last Name: user_lastname
+  - Fed E-mail: user_email
+  - Fed Job Title: user_fedrole
+  - Department: user_department
+    choices:
+      - Accounting: ACCNTG
+      - Audit: AUDIT
+      - Business Technology Solutions: BTS
+      - Cash Services: CASH
+      - Central Accounting Tech Services: CENTRAL ACCNTG TECH SVCS
+      - Corporate Affairs: CORP AFFAIRS
+      - Corporate Communications: CORP COMMS
+      - Corporate Strategy & Risk: CORP STRAT & RISK
+      - FedNow: FEDNOW
+      - Financial Planning & Analysis: FIN PLN & ANALYSIS
+      - Financial Support Office: FIN SUPP OFFICE
+      - Human Resources: HR
+      - Information Security: INFO SEC
+      - Law Enforcement Unit: LEU
+      - Legal: Legal
+      - National Image Services: NATL IMG SVCS
+      - Network Security Services: NTWK SEC SVCS
+      - Office of Diversity, Equity & Inclusion: ODEI
+      - Payment Strategies: PYMNT STRAT
+      - Procurement: PROCURMNT
+      - Real Estate Services Group: RESG
+      - Research: RESH
+      - Supervision, Regulation & Credit: SUP REG CRED
+      - Wholesale Payments: WHOLESALE
+      - Other: other_department
+---
+mandatory: True
+question:  |
+  Outside Employment Activty Info
+subquestion:  |
+  Please tell us about your outside employment activity
+fields:
+  - Name of Outside Employer: employer_name
+  - Outside Employment position: outside_position
+  - Estimated hours per week: employment_hours
+  - Is the position paid or unpaid?: paid_position
+    input type: radio
+    choices:
+      - Paid
+      - Unpaid
+  - Please describe the position: employment_description
+    input type: area
+    rows: 10
+    maxlength: 400
+---
+mandatory: True
+question: |
+ Does your outside employment fall into any of the following categories?
+fields:
+  - "Select all categories that are the same or substantiall similar": is_approved
+    datatype: checkboxes
+    choices:
+      - Member of the armed forces of the United States or any National Guard unit
+      - Employment, seasonal or otherwise, at a retail store such as Lord &Taylor, Macy’s, or Target.
+      - Self-employment selling consumer products such as Avon, Tupperware, small appliances, laundry products, cosmetics, etc. as long as the employee does not sell the products at the Bank.
+      - Employment at a restaurant, lounge, bar, etc.
+      - Employment as a sports coach, referee, or concessionaire, photographer, church organist, or church choral director.
+      - Employment as a real estate agent, a lawn care service provider, or a home repair, plumbing or electrical contractor, provided you are not employed by any person or entity doing business with or actively seeking to do business with the Bank.
+      - Employment as an entertainer.
+      - Employment in childcare or elder care.
+      - Employment with a public law enforcement agency, such as the police or sheriff department or with a fire department.
+      - Occasional, casual employment repairing, de-bugging, maintaining or installing hardware or software on the personal computers of neighbors, friends, or acquaintances
+---
+mandatory: True
+question:  |
+  Financial Sector Prohibition
+subquestion:  |
+  As a general rule, employees should not accept outside employment at domestic or foreign banks, investment firms, bank holding companies, savings & loan holding companies, or their affiliates. 
+fields:
+ - "Does your outside employment activity fall within one of those categories?": is_financial
+   datatype: yesnoradio
+---
+code:  |
+ if is_financial:
+   approval_status == "DENIED"
+   approval_reason == "Outside Employment Actvity is not a permitted activity. If you feel this is an error, please contact the Ethics Officer for additional review."
+   denial_notice = True
+   approval_notice = False
+   review_notice = False
+ #elif: user_deparment == "BTS":
+   #approval_status = "PENDING REVIEW"
+   #approval_reason = "Additional information is needed. The Ethics team will contact you."
+   #denial_notice = False
+  # approval_notice = False
+  # review_notice = True
+ #elif: is_approved['None of the above.']:
+  # approval_status = "PENDING REVIEW"
+  # approval_reason = "Additional information is needed. The Ethics team will contact you."
+  # denial_notice = False
+   #approval_notice = False
+  # review_notice = True
+ else:
+   approval_status = "APPROVED"
+   approval_reason = "Outside Employment Activity meets the approval criteria"
+   denial_notice = False
+   approval_notice = True
+   review_notice = False
+ endif
+
+---
+mandatory: True
+question: |
+  Sign your name
+subquestion: |
+  By signing your name, you certify that the information provided is accurate.
+signature: user_signature
+---
+
+---
+mandatory: True
+question: |
+  Here is your document.
+attachment:
+  name: Outside Employment Activity Memo
+  filename: Outside Employment Activity Memo
+  docx template file: Outside_Activity_Approval_Memo.docx
+  valid formats:
+    - pdf
+    - docx
+---
+    
